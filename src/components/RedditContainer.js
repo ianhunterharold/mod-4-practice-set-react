@@ -7,6 +7,7 @@ class RedditContainer extends React.Component {
   state = {
     unreadArticles: [],
     readArticles: [],
+    articlesRead: 0
   }
 
   fetchReddit =()=> {
@@ -30,7 +31,8 @@ class RedditContainer extends React.Component {
     })
     this.setState({
       unreadArticles: newUnreadArticles,
-      readArticles: newReadArticles
+      readArticles: newReadArticles,
+      articlesRead: this.state.articlesRead + 1, 
     })
   }
 
@@ -39,6 +41,7 @@ class RedditContainer extends React.Component {
     return  (
       <div>
       <h3>Reddit Container</h3>
+      <h4>Articles Read: {this.state.articlesRead} </h4>
       <UnreadContainer articles={this.state.unreadArticles} handleClick={this.readArticle} />
       <ReadContainer articles={this.state.readArticles}/>
       </div>
